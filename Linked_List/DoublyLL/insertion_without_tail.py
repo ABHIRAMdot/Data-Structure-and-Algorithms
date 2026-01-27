@@ -154,19 +154,43 @@ class DoulyLL:
                 n.pref.nref = None
             else:
                 print("x is not present in DLL")
-        
+
+    def insert_before_index(self, data, pos):
+        new_node = Node(data)
+        if pos == 0:
+            new_node.nref = self.head
+            self.head.pref = new_node
+            self.head = new_node
+            return
+        n = self.head
+        index = 0
+        while n and index != pos -1:
+            n = n.nref
+            index += 1
+
+        if not n or not n.nref:
+            print("indx out of range")
+            return
+        new_node.nref = n.nref
+        new_node.pref = n
+        n.nref.pref = n
+        n.nref = new_node 
+
+
+
 
 
 
 dl1 = DoulyLL()
 dl1.add_begin(10)
-# dl1.add_end(20)
-# dl1.add_after(30, 20)
-# dl1.add_before(50, 20)
+dl1.add_end(20)
+dl1.add_after(30, 20)
+dl1.add_before(50, 20)
 # dl1.delete_end()
 
 # dl1.delete_begin()
-dl1.delete_any(10)
+# dl1.delete_any(10)
+dl1.insert_before_index(80, 4)
 dl1.print_F_DL()
 
 # dl1.print_reverse_DL()

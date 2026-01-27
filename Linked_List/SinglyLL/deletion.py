@@ -11,7 +11,7 @@ class Linked_list:
     def print_LL(self):
         n = self.head
         while n is not None:
-            print(n.data)
+            print(n.data, "-->", end=" ")
             n = n.ref
 
     def add_begin(self, data):
@@ -22,12 +22,54 @@ class Linked_list:
     def add_end(self, data):
         new_node = Node(data)
         if self.head is None:
-            print("Linked list is Empty")
+            self.head = new_node
+            
         else:
             n = self.head
             while n.ref is not None:
                 n = n.ref
             n.ref = new_node
+
+    def add_after(self, data, x):
+        n = self.head
+        while n is not None:
+            if n.data == x:
+                break
+            n = n.ref
+        
+        if n is None:
+            print("Linked list is empty")
+        else:
+            new_node = Node(data)
+            new_node.ref = n.ref
+            n.ref = new_node
+
+    def add_before(self, data, x):
+        if self.head is None:
+            print("LL is empty")
+            return
+        if self.head.data == x:
+            self.add_begin(data)
+            return
+        n = self.head
+        while n.ref is not None:
+            if n.ref.data == x:
+                break
+            n = n.ref
+        
+        if n.ref is not None:
+            new_node = Node(data)
+            new_node.ref = n.ref
+            n.ref = new_node
+        else:
+            if n.data == x:
+                self.add_end(data)
+            else:
+                print("node not found")
+
+
+
+
     
     def delete_begin(self):
         if self.head is None:
@@ -64,10 +106,62 @@ class Linked_list:
             else:
                 n.ref = n.ref.ref
 
+    def array_to_all(self, arr):
+        for value in arr:
+            self.add_end(value)
+
+    def insert_after_index(self, data, pos):
+        
+        new_node = Node(data)
+        index = 0
+        n = self.head
+        while n and index != pos:
+            n = n.ref
+            index += 1
+        if not n:
+            print("Index out of range")
+            return
+
+        
+        new_node.ref = n.ref
+        n.ref = new_node
+
+    def insert_before_index(self, data, pos):
+        new_node = Node(data)
+
+        if pos == 0:
+            new_node.ref = self.head
+            self.head = new_node
+            return
+        
+        n = self.head
+        index = 0
+        while n and index != pos -1:
+             n = n.ref
+             index += 1
+        
+        if not n or not n.ref:
+            print("index out of range")
+            return
+        
+        new_node.ref = n.ref
+        n.ref = new_node
 
 
 
 
+
+
+        
+
+
+
+
+
+
+
+
+a = [11,22,33,44,55]
             
 
 ll = Linked_list()
@@ -76,7 +170,10 @@ ll.add_end(20)
 ll.add_end(30)
 ll.add_end(40)
 
-ll.delete_any_value(50)
+# ll.delete_any_value(11)
 # ll.delet_end()
 # ll.delete_begin()
+
+# ll.array_to_all(a)
+ll.insert_after_index(70, 0)
 ll.print_LL()

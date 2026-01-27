@@ -76,6 +76,25 @@ class Linked_list:
         else:
             print("Linked list is not empty")
 
+    def insert_before_index(self, data, pos):
+        new_node = Node(data)
+        if pos == 0:
+            new_node.ref = self.head
+            self.head = new_node
+            return
+        n = self.head
+        index = 0
+
+        while n and index != pos -1:
+            n = n.ref
+            index += 1
+        
+        if not n or not n.ref:
+            print("index out of range")
+            return 
+        new_node.ref = n.ref
+        n.ref = new_node 
+
 
 
 LL1 = Linked_list()
@@ -89,12 +108,17 @@ LL1.add_begin(30)
 LL1.add_after(50, 300)
 LL1.add_before(888, 200)
 LL1.insert_empty(20000)
+
+LL1.insert_before_index(333, 8)
 LL1.print_LL()
 
 
 
 
-# Linked list wit explanation
+
+
+
+# Linked list with explanation
 
 # class Node:
 #     def __init__(self, data):
