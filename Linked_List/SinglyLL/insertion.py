@@ -95,7 +95,114 @@ class Linked_list:
         new_node.ref = n.ref
         n.ref = new_node 
 
+    def find_middle(self):
+        if self.head is None:
+            return None
+        
+        slow = self.head
+        fast = self.head
 
+        while fast and fast.ref:
+            slow = slow.ref
+            fast = fast.ref.ref
+
+        return slow.data
+    
+    def detect_cycle(self):
+        slow = self.head
+        fast = self.head
+
+        while fast and fast.ref:
+            slow = slow.ref
+            fast = fast.ref.ref
+        
+        if slow == fast:
+            return True
+        
+        return False
+    
+    # def delete_nth_from_end(self, n):  #deleting from the end 
+    #     fast = self.head
+    #     slow = self.head
+
+    #     for _ in range(n):   #it give the position and assign it to fast
+    #         if fast is None:
+    #             return
+    #         fast = fast.ref
+
+    #     if fast is None:    # this means if the fast becomes none then we should delete the head
+    #         self.head = self.head.ref
+    #         return
+        
+    #     while fast.ref:
+    #         fast = fast.ref
+    #         slow = slow.ref
+
+    #     slow.ref = slow.ref.ref #delete the node 
+
+
+    def delete_nth_from_end(self, n):
+        fast = self.head
+        slow = self.head
+
+        for _ in range(n):
+            if fast is None:
+                return
+            fast = fast.ref
+
+        if fast is None:
+            self.head = self.head.ref
+            return
+        
+        while fast.ref:
+            fast = fast.ref
+            slow = slow.ref
+
+        slow.ref = slow.ref.ref
+
+
+    def reverse_ll(self):
+        prev = None
+        curr = self.head
+
+        while curr is not None:
+            next = curr.ref
+            curr.ref = prev
+            prev = curr
+            curr = next
+        
+        self.head = prev
+    
+    
+    def remove_duplicates_sorted(self):
+        curr = self.head
+
+        while curr and curr.ref:
+            if curr.data == curr.ref.data:
+                curr.ref = curr.ref.ref
+            else:
+                curr = curr.ref
+
+
+    def remove_duplicates_unsorted(self):
+        seen =set()
+        curr = self.head
+        prev = None
+
+        while curr:
+            if curr.data in seen:
+                prev.ref = curr.ref
+            else:
+                seen.add(curr.data)
+                prev = curr
+
+            curr = curr.ref
+            
+
+
+
+
+        
 
 LL1 = Linked_list()
 
@@ -107,10 +214,18 @@ LL1.add_end(300)
 LL1.add_begin(30)
 LL1.add_after(50, 300)
 LL1.add_before(888, 200)
-LL1.insert_empty(20000)
+# LL1.insert_empty(20000)
 
-LL1.insert_before_index(333, 8)
+# LL1.insert_before_index(333, 7)
+# print(LL1.find_middle())
+
+# print(LL1.detect_cycle())
+# LL1.delete_nth_from_end(7)
+LL1.reverse_ll()
+
+
 LL1.print_LL()
+
 
 
 
@@ -219,3 +334,4 @@ LL1.print_LL()
 # LL1.print_LL()
 
 #-----------------------------------
+

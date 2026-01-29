@@ -150,15 +150,28 @@ class Linked_list:
 
 
 
+    def remove_duplicates_sorted(self):
+        curr = self.head
 
+        while curr and curr.ref:
+            if curr.data == curr.ref.data:
+                curr.ref = curr.ref.ref
+            else:
+                curr =curr.ref
+                
+    def remove_duploicates_unsorted(self):
+        seen = set()
+        curr = self.head
+        prev = None
 
-        
-
-
-
-
-
-
+        while curr and curr.ref:
+            if curr.data in seen:
+                prev.ref = curr.ref  #delete curr
+            else:
+                seen.add(curr.data)
+                prev = curr
+            
+            curr = curr.ref
 
 
 a = [11,22,33,44,55]

@@ -176,6 +176,87 @@ class DoulyLL:
         n.nref.pref = n
         n.nref = new_node 
 
+    
+
+    def reverse_dll(self):
+        curr = self.head
+        temp = None
+
+        while curr is not None:
+            temp = curr.pref
+            curr.pref = curr.nref
+            curr.nref = temp
+
+            curr = curr.pref
+        
+        if temp is not None:
+            self.head = temp.pref
+
+        
+    # def remove_duplicate_sorted(self):
+    #     curr = self.head
+
+    #     while curr and curr.nref:
+    #         if curr.data == curr.nref.data:
+    #             # curr.nref = curr.nref.nref
+    #             dup = curr.nref
+    #             curr.nref = dup.nref   #delete the next ref data
+
+    #             if dup.nref:
+    #                 dup.nref.pref = curr
+    #         else:
+    #             curr = curr.nref
+
+
+
+    # def remove_duplicates_unsorted(self):
+    #     curr = self.head
+    #     seen = set()
+
+    #     while curr:
+    #         if curr.data in seen:
+    #             if curr.pref:
+    #                 curr.pref.nref = curr.nref
+
+    #             if curr.nref:
+    #                 curr.nref.pref = curr.pref
+            
+    #         else:
+    #             seen.add(curr.data)
+
+    #         curr = curr.nref
+
+
+    def remove_duplicates_sorted(self):
+        curr = self.head
+
+        while curr and curr.nref:
+            if curr.data == curr.nref.data:
+                dup = curr.nref
+                curr.nref = dup.nref    
+
+                if dup.nref:
+                    dup.nref.pref = curr
+            else:
+                curr = curr.nref
+
+    def remove_duplicate_unsorted(self):
+        curr = self.head
+        seen = set()
+
+        while curr:
+            if curr.data in seen:
+                if curr.pref:
+                    curr.pref.nref = curr.nref
+                if curr.nref:
+                    curr.nref.pref = curr.pref
+
+            else:
+                seen.add(curr.data)
+            
+            curr = curr.nref
+
+            
 
 
 
@@ -190,7 +271,8 @@ dl1.add_before(50, 20)
 
 # dl1.delete_begin()
 # dl1.delete_any(10)
-dl1.insert_before_index(80, 4)
+# dl1.insert_before_index(80, 3)
+dl1.reverse_dll()
 dl1.print_F_DL()
 
 # dl1.print_reverse_DL()
