@@ -37,6 +37,7 @@
 # print(arr)
 
 
+#binery search
 
 # arr = [2, 4, 6, 8, 10, 12]
 
@@ -53,9 +54,10 @@
 #         break
 #     elif target > arr[mid]:
 #         low = mid + 1
-    
+
 #     else:
 #         high = mid - 1
+    # return -1
 
 
 # arr = [1, 2, 2, 3, 1, 4, 2]
@@ -88,20 +90,60 @@
 #     print("average of even numbers", avg)
 
 
+##second largest
+arr = [5,2,7,4,6,1]
 
-arr = [1,2,3,4,6]
+# def second_largest(arr):
+#     f = 0
+#     s = 0
 
-def second_largest(arr):
-    f = 0
-    s = 0
+#     for i in arr:
+#         if i > f:
+#             s = f
+#             f = i
+#         elif i > s and i < f:
+#             s = i
+#     return s
 
-    for i in arr:
-        if i > f:
-            s = f
-            f = i
-        elif i > s and i < f:
-            s = i
-    return s
+# print(second_largest(arr))
 
-print(second_largest(arr))
+##third largest
 
+# def third_largest(arr):
+#     first = second = third = 0
+
+#     for i in arr:
+#         if i > first:
+#             third = second
+#             second = first
+#             first = i
+
+#         elif i > second and i != first:
+#             third = second
+#             second = i
+#         elif i > third and i != second and i != first:
+#             third = i
+
+#     return third
+
+# print(third_largest(arr))
+
+
+#find minimum in sorted rotated
+arr = [6,7,1,2,3,4,5]
+def find_min(arr):
+    low = 0
+    high = len(arr) - 1
+
+    while low < high:
+        mid = (low + high) // 2
+        if arr[mid] > arr[high]:
+            low = mid + 1
+        else:
+            high = mid
+
+    return arr[low]
+
+print(find_min(arr))
+
+    
