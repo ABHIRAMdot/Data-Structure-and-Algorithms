@@ -4,7 +4,6 @@ class Node:
         self.data = data
         self.nref = None
         self.pref = None
-        
 
 class DoulyLL:
     def __init__(self):
@@ -18,7 +17,7 @@ class DoulyLL:
             while n is not None:
                 print(n.data, "-->", end=" ")
                 n = n.nref
-    
+
     def print_reverse_DL(self):
         if self.head is None:
             print("Linked list is empty")
@@ -186,7 +185,6 @@ class DoulyLL:
             temp = curr.pref
             curr.pref = curr.nref
             curr.nref = temp
-
             curr = curr.pref
         
         if temp is not None:
@@ -256,7 +254,9 @@ class DoulyLL:
             
             curr = curr.nref
 
-            
+
+        
+
 
 
 

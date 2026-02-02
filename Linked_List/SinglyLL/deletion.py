@@ -190,3 +190,8 @@ ll.add_end(40)
 # ll.array_to_all(a)
 ll.insert_after_index(70, 0)
 ll.print_LL()
+
+
+
+
+

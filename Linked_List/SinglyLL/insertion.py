@@ -200,10 +200,6 @@ class Linked_list:
             
 
 
-
-
-        
-
 LL1 = Linked_list()
 
 LL1.add_begin(10)
