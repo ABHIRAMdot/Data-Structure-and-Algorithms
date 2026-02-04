@@ -9,7 +9,7 @@
 #     e -= 1
 
 # print(ar)
-
+#-------------------------------------
 
 # m = [[1, 2], [3, 4], [5, 6]]
 
@@ -21,7 +21,7 @@
 
 # print(f)
 
-
+#---------------------------------------
 
 ##bubble sort
 # arr = [5, 1, 4, 2, 8]
@@ -36,6 +36,7 @@
 
 # print(arr)
 
+#----------------------------------------------------
 
 #binery search
 
@@ -59,7 +60,7 @@
 #         high = mid - 1
     # return -1
 
-
+#-----------------------------------------------------
 # arr = [1, 2, 2, 3, 1, 4, 2]
 
 # freq = {}
@@ -72,6 +73,7 @@
 
 # print(freq) 
 
+#-----------------------------------------------------
 
 # arr = [1,2,3,4,6]
 
@@ -89,45 +91,47 @@
 #     avg = sum / count
 #     print("average of even numbers", avg)
 
+#-------------------------------------------------------
 
 ##second largest
 arr = [5,2,7,4,6,1]
 
-# def second_largest(arr):
-#     f = 0
-#     s = 0
+def second_largest(arr):
+    f = 0
+    s = 0
 
-#     for i in arr:
-#         if i > f:
-#             s = f
-#             f = i
-#         elif i > s and i < f:
-#             s = i
-#     return s
+    for i in arr:
+        if i > f:
+            s = f
+            f = i
+        elif i > s and i < f:
+            s = i
+    return s
 
 # print(second_largest(arr))
 
+#------------------------------------------------------------
 ##third largest
+def third_largest(arr):
+    first = second = third = 0
 
-# def third_largest(arr):
-#     first = second = third = 0
+    for i in arr:
+        if i > first:
+            third = second
+            second = first
+            first = i
 
-#     for i in arr:
-#         if i > first:
-#             third = second
-#             second = first
-#             first = i
+        elif i > second and i != first:
+            third = second
+            second = i
+        elif i > third and i != second and i != first:
+            third = i
 
-#         elif i > second and i != first:
-#             third = second
-#             second = i
-#         elif i > third and i != second and i != first:
-#             third = i
-
-#     return third
+    return third
 
 # print(third_largest(arr))
 
+#--------------------------------------------------------------
 
 #find minimum in sorted rotated
 arr = [6,7,1,2,3,4,5]
@@ -144,6 +148,24 @@ def find_min(arr):
 
     return arr[low]
 
-print(find_min(arr))
+# print(find_min(arr))
 
-    
+#--------------------------------------------------
+def last_occurrence(arr, target):
+    l, r = 0, len(arr)-1
+    res = -1
+    while l <= r:
+        mid = (l+r)//2
+        if arr[mid] == target:
+            res = mid
+            l = mid + 1
+        elif arr[mid] < target:
+            l = mid + 1
+        else:
+            r = mid - 1
+    return res
+
+# print(last_occurrence([1,2,3,1,2,3,4], 4))
+
+#-------------------------------------------------
+

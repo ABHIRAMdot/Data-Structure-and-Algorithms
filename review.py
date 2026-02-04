@@ -57,9 +57,7 @@
 # l.print_LL()
 
 s = input("Enter a string \n")
-
 f = {}
-
 
 for i in s:
     if i in f:
