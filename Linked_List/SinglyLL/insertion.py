@@ -169,6 +169,7 @@ class Linked_list:
             next = curr.ref
             curr.ref = prev
             prev = curr
+            
             curr = next
         
         self.head = prev

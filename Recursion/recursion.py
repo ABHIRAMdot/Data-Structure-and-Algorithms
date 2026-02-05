@@ -116,19 +116,19 @@ def sum_of_even(s):
 
 #-----------------------------------------------------------
 
-# def removeduplicate(s, seen=None):
-#     if seen is None:
-#         seen = set()
+def removeduplicate(s, seen=None):
+    if seen is None:
+        seen = set()
 
-#     if s == "":
-#         return ""
+    if s == "":
+        return ""
     
-#     if s[0] in seen:
-#         return removeduplicate(s[1:], seen) 
+    if s[0] in seen:
+        return removeduplicate(s[1:], seen) 
     
-#     else:
-#         seen.add(s[0])
-#         return s[0] + removeduplicate(s[1:], seen)
+    else:
+        seen.add(s[0])
+        return s[0] + removeduplicate(s[1:], seen)
     
 
 # print(removeduplicate("banana"))
@@ -136,18 +136,18 @@ def sum_of_even(s):
 #--------------------------------------------------------------
 
 
-# def replace_alphabet(s, n):
-#     result = ""
+def replace_alphabet(s, n):
+    result = ""
 
-#     for i in s:
-#         if i.isalpha():
-#             pos = ord(i) - ord("a")
-#             new_pos = (pos + n) % 26
-#             result += chr(new_pos + ord("a"))
-#         else:
-#             result += i
+    for i in s:
+        if i.isalpha():
+            pos = ord(i) - ord("a")
+            new_pos = (pos + n) % 26
+            result += chr(new_pos + ord("a"))
+        else:
+            result += i
             
-#     return result
+    return result
 
 # print(replace_alphabet("abcd", 3))
 
