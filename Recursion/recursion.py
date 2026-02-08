@@ -135,20 +135,3 @@ def removeduplicate(s, seen=None):
 
 #--------------------------------------------------------------
 
-
-def replace_alphabet(s, n):
-    result = ""
-
-    for i in s:
-        if i.isalpha():
-            pos = ord(i) - ord("a")
-            new_pos = (pos + n) % 26
-            result += chr(new_pos + ord("a"))
-        else:
-            result += i
-            
-    return result
-
-# print(replace_alphabet("abcd", 3))
-
-#---------------------------------------------------------------

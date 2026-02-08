@@ -122,6 +122,66 @@ class Doubly_LL:
             self.head = self.head.next
             self.head.prev = None
 
+    def delete_any(self, x):
+        if self.head is None:
+            print("DLL is empty")
+            return
+        if self.head and self.head.next is None:
+            if self.head.data == x:
+                self.head = None
+                self.tail = None
+            else:
+                print("Node not found")
+            return
+        if self.head.data == x:
+            self.head = self.head.next
+            self.head.prev = None
+            return
+        n = self.head
+        while n.next:
+            if n.data == x:
+                break
+            n = n.next
+        if n.next is None:
+            if n.data == x:
+                self.tail = n.prev
+                self.tail.next = None
+        else:
+            n.prev.next = n.next
+            n.next.prev = n.prev
+
+    def delete_mid(self):
+        if self.head is None:
+            print("DLL is empty")
+            return
+        slow = self.head
+        fast = self.head
+        
+        while fast and fast.next:
+            slow = slow.next
+            fast = fast.next.next
+        
+        slow.prev.next = slow.next
+        slow.next.prev = slow.prev
+
+    def reverse_DLL(self):
+
+        if self.head is None:
+            return
+        
+        cur = self.head
+        self.tail = self.head
+
+        while cur:
+            cur.next, cur.prev = cur.prev, cur.next
+            if cur.prev is None:
+                self.head = cur
+            cur = cur.prev
+
+        
+
+
+
 
 dl =Doubly_LL()
 dl.add_end(10)
@@ -132,7 +192,10 @@ dl.add_end(40)
 # dl.add_begin(50)
 dl.add_after(60, 30)
 dl.add_before(70, 30)
-dl.delete_end()
-dl.delete_begin()
+# dl.delete_end()
+# dl.delete_begin()
+dl.delete_any(40)
+# dl.delete_mid()
+dl.reverse_DLL()
 dl.print_DLL()
 # dl.print_reverse()

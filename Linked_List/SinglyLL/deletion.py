@@ -174,6 +174,70 @@ class Linked_list:
             curr = curr.ref
 
 
+    def kth_remove_end(self, n):
+        dummy = Node(0)
+        dummy.ref = self.head
+
+        slow = dummy
+        fast = dummy
+        for _ in range(n + 1):
+            if fast is None:
+                return
+            fast = fast.ref
+
+        while fast:
+            slow = slow.ref
+            fast = fast.ref
+        
+        slow.ref = slow.ref.ref
+
+        self.head = dummy.ref
+
+    def remove_last_occurrence(self, x):
+        prev = None
+        cur = self.head
+
+        last_prev = None
+        last_node = None
+
+        while cur:
+            if cur.data == x:
+                last_prev = prev
+                last_node = cur
+            prev = cur
+            cur = cur.ref
+        
+        if last_node is None:
+            print("no match found")
+            return
+        if last_prev is None:
+            self.head = self.head.ref
+        else:
+            last_prev.ref = last_node.ref
+
+    def remove_nth_node_end(self, k):
+        count = 0
+        cur = self.head
+
+        while cur:
+            count +=1
+            cur = cur.ref
+        
+        if k > count:
+            print("Invalind position")
+            return
+        if k == count:
+            self.head = self.head.ref
+            return
+        cur = self.head
+        for _ in range(count - k - 1):
+            cur = cur.ref
+        cur.ref = cur.ref.ref
+
+
+
+
+
 a = [11,22,33,44,55]
             
 
@@ -188,10 +252,24 @@ ll.add_end(40)
 # ll.delete_begin()
 
 # ll.array_to_all(a)
-ll.insert_after_index(70, 0)
+# ll.insert_after_index(70, 0)
+ll.kth_remove_end(2)
 ll.print_LL()
 
 
 
+# LL = Linked_list()
+# LL.add_end(10)
+# LL.add_end(20)
+# LL.add_end(30)
+# LL.add_end(20)
+# LL.add_end(50)
+
+# LL.print_LL()
+
+# LL.remove_last_occurrence(20)
+
+# print("\nAfter deletion:")
+# LL.print_LL()
 
 
