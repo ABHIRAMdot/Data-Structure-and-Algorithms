@@ -135,3 +135,21 @@ def removeduplicate(s, seen=None):
 
 #--------------------------------------------------------------
 
+def remove_duplicates(s, seen=None):
+    if seen is None:
+        seen = set()
+    
+    if s == "":
+        return ""
+    
+    ch = s[0]
+    
+    if ch in seen:
+        return remove_duplicates(s[1:], seen)
+    else:
+        seen.add(ch)
+        return ch + remove_duplicates(s[1:], seen)
+    
+string = "programming"
+    
+print(remove_duplicates(string))

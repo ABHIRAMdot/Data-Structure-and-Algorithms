@@ -270,4 +270,29 @@ def replace_alphabet(s, n):
             
     return result
 
-# print(replace_alphabet("abcd", 3))
+# print(replace_alphabet("abc", 2))
+
+
+# def replace_charector(string, n):
+#     result = ""
+
+#     for i in string:
+#         if i.isalpha():
+#             pos = ord()
+
+
+users = [
+  { "name":"Ayan", "age" :21 },
+  { "name": "Rahul", "age":25 },
+  { "name": "Neha","age": 19 }
+]
+
+
+
+
+for i in users:
+    i["gender"] = "male"
+
+
+
+print(users)

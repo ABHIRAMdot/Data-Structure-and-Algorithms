@@ -1,12 +1,20 @@
-s = "abc123def45"
+# s = "abc123def45"
 
-lst = []
+# lst = []
 
-for i in s:
-    if i.isdigit():
-        lst.append(int(i))
+# for i in s:
+#     if i.isdigit():
+#         lst.append(int(i))
 
 # print(lst)
+
+# s1 = []
+
+# for i in s:
+#     if '0' <= i <= '9':
+#         s1.append(i)
+
+# print(''.join(s1))
 
 #---------------------------------
 
@@ -167,14 +175,48 @@ def sum_of_digits(n):
 
 # print(find_element(a, ))
 
+#----------------------------------------
+
+# input = [1,0,2,0,3,0,4]
+# s = []
+
+# pos = 0
+
+# for i in input:
+#     if i != 0:
+#         s.append(i)
+#     else:
+#         pos += 1
+
+# for i in range(pos):
+#     s.append(0)
+
+# print(s)
+
+# moving zeros to end without an extra list *
+nums = [0,1,0,3,12]
+
+n = len(nums)
+pos = 0
+
+for i in range(n):
+    if nums[i] != 0:
+        nums[pos], nums[i] = nums[i], nums[pos]
+        pos +=1
+
+# print(nums)
+#------------------------------------------------------
 
 
-s = "abc 123 xyz"
+# s = 123
+# digit_sum = 0
 
-# s1 = ' '.join(i[::-1] for i in s.split())
-s1 = list(s)
-start  = 0
+# while s > 0:
+#     temp = s % 10
+#     digit_sum += temp
+#     s //= 10
 
-for i in range(len(s1)):
-    i
-print(s1)
+# print(digit_sum)
+
+
+
