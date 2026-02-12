@@ -152,4 +152,83 @@ def remove_duplicates(s, seen=None):
     
 string = "programming"
     
-print(remove_duplicates(string))
+# print(remove_duplicates(string))
+
+#-----------------------------------------------------------
+# back tracking
+
+def subsets(s, current = ""):
+    if s == "":
+        print(current)
+        return 
+    
+    subsets(s[1:], current + s[0])
+    subsets(s[1:], current)
+# subsets("ab")
+#-------------------------------------------
+
+def call_times(n = 1):
+    if n > 5:
+        return 
+    print("call", n)
+    call_times(n+1)
+
+# # call_times()
+
+# #-----------------------------------
+
+# def under_limit(cur, prev, limit):
+#     if cur > limit:
+#         return
+#     print(cur, end=" ")
+#     return under_limit(prev, cur + prev, limit)
+
+# # under_limit(0,1,50)
+    
+
+# def reverse_str(s):
+#     if s == "":
+#         return ""
+#     return reverse_string(s[1:]) + s[0] 
+
+# # print(reverse_str("hello"))
+# def remove_c(s, char):
+#     if s == "":
+#         return ""
+    
+#     if s[0] == char:
+#         return remove_c(s[1:], char)
+#     return s[0] + remove_c(s[1:], char)
+
+# # print(remove_c("axbxcdx", "x"))
+
+
+
+# def remove_d(s, seen=None):
+#     if seen == None:
+#         seen = set()
+    
+#     if s =="":
+#         return ""
+
+#     if s[0] in seen:
+#         return remove_d(s[1:], seen)
+#     else:
+#         seen.add(s[0])
+#         return s[0] + remove_d(s[1:], seen)
+    
+# print(remove_d("mississippi"))
+
+
+# def digit_sum(n):
+#     if n ==0:
+#         return 0
+#     return n % 10 + digit_sum(n//10)
+
+# print(digit_sum(3))
+
+
+# arr = [1, [2, 3], [4, [5, 6]], 7]
+
+# def nested_ar_flat(ar):
+    
