@@ -67,7 +67,7 @@ for i in s:
 
 for i in s:
     if f[i] ==1:
-        print(i)
+        # print(i)
         break
 
 # for i in s:
