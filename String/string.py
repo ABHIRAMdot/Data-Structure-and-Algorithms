@@ -292,7 +292,7 @@ users = [
 
 for i in users:
     i["gender"] = "male"
+    
+# print(users)
 
-
-
-print(users)
+s = "hello world"

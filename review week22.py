@@ -56,20 +56,21 @@
 # l.remove_duplicates()
 # l.print_LL()
 
-s = input("Enter a string \n")
-f = {}
+#--------------------
+# s = input("Enter a string \n")
+# f = {}
 
-for i in s:
-    if i in f:
-        f[i] += 1
-    else:
-        f[i] = 1
+# for i in s:
+#     if i in f:
+#         f[i] += 1
+#     else:
+#         f[i] = 1
 
-for i in s:
-    if f[i] ==1:
-        # print(i)
-        break
-
+# for i in s:
+#     if f[i] ==1:
+#         # print(i)
+#         break
+#-------
 # for i in s:
 #     f[i] = f.get(i, 0) + 1    #it gives the count of i or zero and + 1
 
