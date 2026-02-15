@@ -175,16 +175,7 @@ def call_times(n = 1):
 
 # # call_times()
 
-# #-----------------------------------
-
-# def under_limit(cur, prev, limit):
-#     if cur > limit:
-#         return
-#     print(cur, end=" ")
-#     return under_limit(prev, cur + prev, limit)
-
-# # under_limit(0,1,50)
-    
+#-------------------------------------
 
 # def reverse_str(s):
 #     if s == "":
@@ -192,6 +183,8 @@ def call_times(n = 1):
 #     return reverse_string(s[1:]) + s[0] 
 
 # # print(reverse_str("hello"))
+
+#------------------------------------- 
 # def remove_c(s, char):
 #     if s == "":
 #         return ""
@@ -227,8 +220,30 @@ def call_times(n = 1):
 
 # print(digit_sum(3))
 
+#------------------------------------------
 
 # arr = [1, [2, 3], [4, [5, 6]], 7]
 
 # def nested_ar_flat(ar):
+#     result = []
+
+#     for item in ar:
+#         if isinstance(item, list):
+#             result.extend(nested_ar_flat(item))
+#         else:
+#             result.append(item)
     
+#     return result
+
+    
+# print(nested_ar_flat(arr))
+
+#------------------------------------------------
+
+def reverse_st(s):
+    if s == "":
+        return ""
+    
+    return  reverse_st(s[1:]) + s[0]
+
+print(reverse_st('abhiram'))

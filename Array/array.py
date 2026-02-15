@@ -177,13 +177,13 @@ def last_occurrence(arr, target):
 #     while l < r:
 #         mid = (l+r)//2
 
-#         if a[mid] < a[r]:
+#         if a[mid] > a[r]:
 #             l = mid + 1
 #         else:
 #             r = mid
 
 
-#     return a[l]
+#     return a[l-1]
 
 # print(find_max(nums))
 

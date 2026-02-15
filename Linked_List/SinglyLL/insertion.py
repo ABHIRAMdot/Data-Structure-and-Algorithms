@@ -200,7 +200,6 @@ class Linked_list:
             curr = curr.ref
             
 
-
 LL1 = Linked_list()
 
 LL1.add_begin(10)
