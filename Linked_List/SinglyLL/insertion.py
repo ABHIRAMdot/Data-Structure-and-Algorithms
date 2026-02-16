@@ -116,8 +116,8 @@ class Linked_list:
             slow = slow.ref
             fast = fast.ref.ref
         
-        if slow == fast:
-            return True
+            if slow == fast:
+                return True
         
         return False
     

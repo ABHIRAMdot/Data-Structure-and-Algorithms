@@ -295,4 +295,9 @@ for i in users:
     
 # print(users)
 
-s = "hello world"
+s = 0
+
+for i in users:
+    s += i["age"]
+
+print(s)
