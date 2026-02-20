@@ -1,7 +1,8 @@
 class HashTable:
     def __init__(self):
         self.MAX = 10
-        self.arr = [None for i in range(self.MAX)]
+        self.arr = [None] * self.MAX
+        self.DELETED = object()
 
     # for string hashing
     def get_hash(self, key):
@@ -20,7 +21,7 @@ class HashTable:
         for i in range(self.MAX):
             new_index = (h + i) % self.MAX
 
-            if self.arr[new_index] is None:
+            if self.arr[new_index] is None or self.arr[new_index] is self.DELETED:
                 self.arr[new_index] = (key, val)
                 return 
             
@@ -39,6 +40,9 @@ class HashTable:
             if self.arr[new_index] is None:
                 return
             
+            if self.arr[new_index] is self.DELETED:
+                continue
+            
             if self.arr[new_index][0] == key:
                 return self.arr[new_index][1]
         
@@ -52,12 +56,23 @@ class HashTable:
             new_index = (h + i) % self.MAX
 
             if self.arr[new_index] is None:
-                return None
-            
-            if self.arr[new_index][0] == key:
-                self.arr[new_index] = None
                 return 
             
+            if self.arr[new_index] is self.DELETED:
+                continue
+            
+            if self.arr[new_index][0] == key:
+                self.arr[new_index] = self.DELETED
+                return 
+    
+    def display(self):
+        result = []
+        for i in self.arr:
+            if i is self.DELETED:
+                result.append('D')
+            else:
+                result.append(i)
+        print(result)
 
 t = HashTable()
 
@@ -67,15 +82,10 @@ t.add('dec 2', 44)
 t.add('march 17', 55)
 t.add('march 1', 35)
 t.add('march 4', 65)
-t.add('march 9', 335)
-t.add('march 19', 255)
-t.add('march 8', 55)
-t.add('march 17', 85)
 t.add('march 5', 55)
 t.add('march 66', 775)
-# t.delete('march 17')
+t.delete('march 17')
 
-
-print(t.arr)
-print(t.get('march 17'))
+t.display()
+print(t.get('march 1'))
 
