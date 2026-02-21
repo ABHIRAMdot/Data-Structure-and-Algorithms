@@ -105,7 +105,7 @@ class HashTable:
                 break
     #Load factor
     def load_factor(self):
-        return self.n/ self.MAX
+        return self.n / self.MAX
 
 
 
