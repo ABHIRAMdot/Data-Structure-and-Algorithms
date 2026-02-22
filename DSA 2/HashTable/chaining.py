@@ -96,6 +96,7 @@ class HashTable:
             self.n += 1
 
 
+
     def __delitem__(self, key):
         h = self.get_hah(key)
         for idx, element in enumerate(self.arr[h]):
