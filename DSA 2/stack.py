@@ -121,10 +121,73 @@ class Stack:
         
         return self.top.data
     
-s = Stack()
-s.push(222)
-s.push(444)
-s.push(555)
+# s = Stack()
+# s.push(222)
+# s.push(444)
+# s.push(555)
 
-print(s.pop())
-print(s.peek())
+# print(s.pop())
+# print(s.peek())
+
+#-------------------------------------
+
+# Reverse a string using Stack
+
+
+class Stack:
+    def __init__(self, size):
+        self.arr = [None] * size
+        self.top = -1
+        
+    def push(self, val):
+        self.top += 1
+        self.arr[self.top] = val
+        return
+    
+    def pop(self):
+        value = self.arr[self.top]
+        self.top -= 1
+        return value
+        
+def reverse(s):
+    stack = Stack(len(s))
+    
+    for i in s:
+        stack.push(i)
+    
+    rev = ""
+    while stack.top != -1:
+        rev += stack.pop()
+    
+    return rev
+    
+# print(reverse("abc"))
+
+#------------------------
+
+#valid paranthesis
+
+def valid_para(s):
+    stack = []
+    
+    mapping = {
+        ')' : '(',
+        '}' : '{',
+        ']' : '['
+    }
+    
+    for i in s:
+        if i in '({[':
+            stack.append(i)
+        else:
+            if not stack:
+                return False
+            
+            top = stack.pop()
+            if mapping[i] != top:
+                return False
+    
+    return len(stack) == 0
+    
+
+# print(valid_para("{[])}"))

@@ -76,6 +76,9 @@ class HashTable:
             h += ord(char)
         return h % self.MAX
     
+    # def get_hash(self, key):
+    #     return key % self.MAX
+    
     def __getitem__(self, key):
         h = self.get_hah(key)
         for element in self.arr[h]:
