@@ -41,13 +41,16 @@ class Queue:
             print(self.arr[i], end=" ")
         print()
 
-# q = Queue(5)
+q = Queue(5)
 
 # q.enqueue(10)
 # q.enqueue(20)
 # q.enqueue(30)
+# q.enqueue(40)
+# q.enqueue(50)
 
 # q.dequeue()
+# q.enqueue(60)
 # q.display()
 
 #-----------------------------------------
@@ -142,10 +145,75 @@ class QueueUsingStack:
         return self.stack1[0]
     
 
-q = QueueUsingStack()
-q.enqueue(19)
-q.enqueue(20)
-q.enqueue(21)
+# q = QueueUsingStack()
+# q.enqueue(19)
+# q.enqueue(20)
+# q.enqueue(21)
 
-print(q.dequeue())
+# print(q.dequeue())
 # print(q.peek())
+
+#------------------------------------------
+
+class CircularQueue:
+    def __init__(self, size):
+        self.size = size
+        self.arr = [None] * size
+        self.front = -1
+        self.rear = -1
+
+    def isEmpty(self):
+        return self.front == -1
+    def isFull(self):
+        return (self.front ==(self.rear +1) % self.size)
+    
+    def enqueue(self, val):
+        if self.isFull():
+            print("Queue Overflow")
+            return
+        if self.isEmpty():
+            self.front = self.rear = 0
+
+        else:
+            self.rear = (self.rear + 1) % self.size
+
+        self.arr[self.rear] = val
+
+    def dequeue(self):
+        if self.isEmpty():
+            print("Queue Underflow")
+            return
+        value = self.arr[self.front]
+
+        if self.front == self.rear:
+            self.front = self.rear = -1
+        else:
+            self.front = (self.front + 1) % self.size
+        
+        return value
+    
+    def display(self):
+        if self.isEmpty():
+            print("Queue is Empty")
+            return
+        
+        i = self.front
+        while True:
+            print(self.arr[i], end=" ")
+            if i == self.rear:
+                break
+            i = (i + 1) % self.size
+        print()
+
+q = CircularQueue(5)
+
+q.enqueue(10)
+q.enqueue(20)
+q.enqueue(30)
+q.enqueue(40)
+q.enqueue(50)
+
+q.dequeue()
+
+q.enqueue(4)
+q.display()
