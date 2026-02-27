@@ -115,34 +115,68 @@ class QueueLL:
 
 #-------------------------------------------
 
-class QueueUsingStack:
+# Queue using Stck better approach
+class QueueStack:
     def __init__(self):
         self.stack1 = []
         self.stack2 = []
-
-    def enqueue(self, val):
+        
+    def enqueue(self, val):     #O(1)
         self.stack1.append(val)
-
-
-    def dequeue(self):
-        if not self.stack1:
+    
+    def dequeue(self):           #O(1)
+        if not self.stack1 and not self.stack2:
             print("Queue Underflow")
             return
-        while self.stack1:
-            self.stack2.append(self.stack1.pop())
-
-        value = self.stack2.pop()
-
-        while self.stack2:
-            self.stack1.append((self.stack2.pop()))
-        
-        return value
+        if not self.stack2:
+            while self.stack1:
+                self.stack2.append(self.stack1.pop())
+        return self.stack2.pop()
     
-    def peek(self):
-        if not self.stack1:
-            return None
+    def display(self):
+        for i in self.stack2:
+            print(i, end = " ")
+            
+# q = QueueStack()
+# q.enqueue(10)
+# q.enqueue(20)
+# q.enqueue(30)
+
+# q.dequeue()
+# q.display()
+
+
+
+
+
+# class QueueUsingStack:
+#     def __init__(self):
+#         self.stack1 = []
+#         self.stack2 = []
+
+#     def enqueue(self, val):   # O(1)
+#         self.stack1.append(val)
+
+
+#     def dequeue(self):       # O(n)
+#         if not self.stack1:
+#             print("Queue Underflow")
+#             return
+#         while self.stack1:
+#             self.stack2.append(self.stack1.pop())
+
+#         value = self.stack2.pop()
+
+#         while self.stack2:
+#             self.stack1.append((self.stack2.pop()))
         
-        return self.stack1[0]
+#         return value
+    
+#     def peek(self):
+#         if not self.stack1:
+#             return None
+        
+#         return self.stack1[0]
     
 
 # q = QueueUsingStack()
@@ -205,15 +239,58 @@ class CircularQueue:
             i = (i + 1) % self.size
         print()
 
-q = CircularQueue(5)
+# q = CircularQueue(5)
 
-q.enqueue(10)
-q.enqueue(20)
-q.enqueue(30)
-q.enqueue(40)
-q.enqueue(50)
+# q.enqueue(10)
+# q.enqueue(20)
+# q.enqueue(30)
+# q.enqueue(40)
+# q.enqueue(50)
 
-q.dequeue()
+# q.dequeue()
 
-q.enqueue(4)
-q.display()
+# q.enqueue(4)
+# q.display()
+
+#-----------------------------------
+
+# reversing queue
+
+from collections import deque
+
+def reverse_queue(q):
+    stack = []
+    
+    while q:
+        stack.append(q.popleft())
+    
+    while stack:
+        q.append(stack.pop())
+        
+    return q
+    
+# q = deque([1,2,3,4,5])
+
+# print("queue", list(q))
+
+# reverse_queue(q)
+
+# print("rev", list(q))
+
+# REverse Using Recursion
+
+def reverse_queue_recursive(q):
+    if not q:
+        return 
+    
+    x = q.popleft()
+    reverse_queue_recursive(q)
+    q.append(x)
+
+# q = deque([1,2,3,4,5])
+
+# print("queue", list(q))
+
+# reverse_queue_recursive(q)
+
+# print("rev", list(q))

@@ -120,6 +120,7 @@ class Stack:
             return
         
         return self.top.data
+
     
 # s = Stack()
 # s.push(222)
@@ -191,3 +192,108 @@ def valid_para(s):
     
 
 # print(valid_para("{[])}"))
+
+#-------------------------------------
+
+# Stack using Queue
+
+from collections import deque
+
+class StackUsingQueue:
+    def __init__(self):
+        self.q = deque()
+
+    def push(self, val):
+        self.q.append(val)
+
+        for _ in range(len(self.q) -1):
+            self.q.append(self.q.popleft())
+
+    
+    def pop(self):
+        return self.q.popleft()
+    
+    def top(self):
+        return self.q[0]
+    
+    def empty(self):
+        return len(self.q) ==0
+    
+    def display(self):
+        print(list(self.q))
+    
+# q = StackUsingQueue()
+
+# q.push(10)
+# q.push(20)
+# q.push(30)
+
+# q.pop()
+# q.push(40)
+# q.display()
+
+#----------------------------
+
+class MySTack:
+    def __init__(self):
+        self.stack = []
+        self.min_stack = []
+
+    def push(self, val):
+        self.stack.append(val)
+
+        if not self.min_stack or val <= self.min_stack[-1]:
+            self.min_stack.append(val)
+
+    def pop(self):
+        value = self.stack.pop()
+
+        if value == self.min_stack[-1]:
+            self.min_stack.pop()
+
+        return value
+    
+    def top(self):
+        return self.stack[-1]
+    
+    def getMin(self):
+        return self.min_stack[-1]
+    
+# s = MySTack()
+# s.push(7)
+# s.push(3)
+# s.push(5)
+# s.push(2)
+
+# s.pop()
+# s.pop()
+
+# print(s.top())
+# print(s.getMin())
+
+
+#-----------------------------------------
+
+def deleteMiddle(stack, k):
+    if k == 1:
+        stack.pop()
+        return
+    
+    temp = stack.pop()
+    
+    deleteMiddle(stack, k - 1)
+
+    stack.append(temp)
+
+def removeMiddle(stack):
+    n = len(stack)
+    k = n// 2+1
+    deleteMiddle(stack, k)
+
+
+s = [1,2,3,4,5,6]
+
+# removeMiddle(s)
+
+# print(s)
+
