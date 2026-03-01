@@ -297,3 +297,29 @@ s = [1,2,3,4,5,6]
 
 # print(s)
 
+
+# sort stack using recursion only
+
+def sort_stack(stack):
+    if not stack:
+        return
+    
+    top = stack.pop()
+    sort_stack(stack)
+    insert_sorted(stack, top)
+    
+
+def insert_sorted(stack, element):
+    if not stack or stack[-1] <= element:
+        stack.append(element)
+        return
+    
+    temp = [3, 1, 4, 2]
+    insert_sorted(stack, element)
+    stack.append(temp)
+
+
+stack = [3,1,4,2]
+
+sort_stack(stack)
+print(stack)
