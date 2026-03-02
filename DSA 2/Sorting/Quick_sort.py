@@ -15,11 +15,15 @@ ar = [10, 7, 8, 9, 1, 5]
 # print(quick_sort(ar))
 
 
+#-------------------------------------------------
+
+#quick sort inplace sorting
+
 def quick_sort(arr, low, high):
     if low < high:
         pivot_idx = partition(arr, low, high)
         quick_sort(arr, low, pivot_idx -1)
-        quick_sort(arr, pivot_idx-1, high)
+        quick_sort(arr, pivot_idx + 1, high)
 
 def partition(arr, low, high):
     pivot = arr[high]
@@ -35,4 +39,7 @@ def partition(arr, low, high):
     return i + 1
 
 
-# print(quick_sort())
+arr = [10, 7, 8, 9, 1, 5]
+quick_sort(arr, 0, len(arr)-1)
+print(arr)
+#--------------------------------------------

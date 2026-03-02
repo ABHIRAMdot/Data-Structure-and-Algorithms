@@ -273,7 +273,27 @@ class MySTack:
 
 
 #-----------------------------------------
+def delete_mid(stack):
+    temp_stack = []
+    n = len(stack)
+    mid = n // 2
 
+    for _ in range(n - mid - 1):
+        temp_stack.append(stack.pop())
+
+    stack.pop()
+
+    while temp_stack:
+        stack.append(temp_stack.pop())
+
+    return stack
+
+# print(delete_mid([1,2,3,4,5]))
+
+
+
+
+#delete middle using recursion
 def deleteMiddle(stack, k):
     if k == 1:
         stack.pop()
@@ -297,6 +317,7 @@ s = [1,2,3,4,5,6]
 
 # print(s)
 
+#------------------------------------------
 
 # sort stack using recursion only
 
@@ -307,19 +328,41 @@ def sort_stack(stack):
     top = stack.pop()
     sort_stack(stack)
     insert_sorted(stack, top)
-    
+
 
 def insert_sorted(stack, element):
     if not stack or stack[-1] <= element:
         stack.append(element)
         return
     
-    temp = [3, 1, 4, 2]
+    temp = stack.pop()
     insert_sorted(stack, element)
     stack.append(temp)
 
 
 stack = [3,1,4,2]
 
-sort_stack(stack)
-print(stack)
+# sort_stack(stack)
+# print(stack)
+
+
+
+
+# sort stack without using recursion but using extra stack
+
+def sort_stack(stack):
+    temp_stack = []
+    
+    while stack:
+        temp = stack.pop()
+
+        while temp_stack and temp_stack[-1] > temp:
+            stack.append(temp_stack.pop())
+
+        temp_stack.append(temp)
+
+    return temp_stack
+
+# stack = [3, 1, 4, 2, 5]   # Last element is top
+# sorted_stack = sort_stack(stack)
+# print(sorted_stack)
