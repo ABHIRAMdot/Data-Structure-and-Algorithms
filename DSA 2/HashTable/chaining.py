@@ -2,7 +2,7 @@
 #     def __init__(self):
 #         self.MAX  = 10
 #         self.arr = [[] for i in range(self.MAX)]
-#         self.n = 0
+#         #self.n = 0
 
 #     def get_hash(self, key):
 #         h = 0
@@ -20,7 +20,7 @@
 #                 break
 #         if not found:
 #             self.arr[h].append((key, val))
-#             self.n += 1
+#            # self.n += 1
 
 #     def get(self, key):         # arr[h] = [ (key, value), (key, value)]
 #         h = self.get_hash(key)
@@ -33,7 +33,7 @@
 #         for idx, element in enumerate(self.arr[h]):
 #             if len(element) == 2 and element[0] == key:
 #                 del self.arr[h][idx]
-#                 self.n -= 1
+#                 #self.n -= 1
 #                 break
 
 
@@ -77,7 +77,7 @@ class HashTable:
         return h % self.MAX
     
     # def get_hash(self, key):
-    #     return key % self.MAX
+    #     return hash(key) % self.MAX
     
     def __getitem__(self, key):
         h = self.get_hah(key)
@@ -132,3 +132,28 @@ print(t.load_factor())
 
 
 
+
+
+
+def sum_of_nested_dict(d):
+    total = 0
+    for i in d.values():
+        if isinstance(i, dict):
+            total += sum_of_nested_dict(i)
+        elif isinstance(i, (int, float)):
+            total += i
+    return total
+        
+data = {
+    "a": 10,
+    "b": {
+        "c": 20,
+        "d": {
+            "e": 30,
+            "f": 40
+        }
+    },
+    "g": 5
+}
+
+# print(sum_of_nested_dict(data))    

@@ -42,47 +42,6 @@
 # print(s.peek())
 
 
-# class Stack:
-#     def __init__(self, size):
-#         self.size = size
-#         self.arr = [None] * size
-#         self.top = -1
-
-#     def isEmpty(self):
-#         return self.top == -1
-    
-#     def isFull(self):
-#         return self.top == self.size -1
-    
-#     def push(self, value):
-#         if self.isFull():
-#             print("Stack Overflow")
-#             return
-#         self.top += 1
-#         self.arr[self.top] = value
-        
-    
-#     def pop(self):
-#         if self.isEmpty():
-#             print("Stack underflow")
-#             return 
-#         value = self.arr[self.top]
-#         self.top -= 1
-#         return value
-    
-#     def peek(self):
-#         if self.isEmpty():
-#             print("Stack is Empty")
-#             return
-#         return self.arr[self.top]
-    
-# s = Stack(3)
-
-# s.push(2)
-# s.push(3)
-# s.push(4)
-# print(s.pop())
-# print(s.peek())
 
 
 
@@ -366,3 +325,39 @@ def sort_stack(stack):
 # stack = [3, 1, 4, 2, 5]   # Last element is top
 # sorted_stack = sort_stack(stack)
 # print(sorted_stack)
+
+
+
+
+
+class MinStack:
+    def __init__(self):
+        self.stack = []
+        self.min_stack = []
+        
+    def push(self, val):
+        self.stack.append(val)
+        
+        if not self.min_stack:
+            self.min_stack.append(val)
+        else:
+            self.min_stack.append(min(val, self.min_stack[-1]))
+            
+    def pop(self):
+        self.stack.pop()
+        self.min_stack.pop()
+        
+    def getMin(self):
+        return self.min_stack[-1]
+        
+# s = MinStack()
+# s.push(5)
+# s.push(3)
+# s.push(7)
+# s.push(2)
+
+# print(s.getMin())  # 3
+# s.pop()
+# print(s.getMin())  # 3
+# s.pop()
+# print(s.getMin())  # 5

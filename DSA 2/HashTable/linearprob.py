@@ -59,7 +59,7 @@ class HashTable:
                 return 
             
             if self.arr[new_index] is self.DELETED:
-                continue
+                continue    
             
             if self.arr[new_index][0] == key:
                 self.arr[new_index] = self.DELETED
@@ -77,7 +77,7 @@ class HashTable:
 t = HashTable()
 
 t.add('march 6', 32)
-t.add('march 7', 99)
+t.add('march 7', 99)    
 t.add('dec 2', 44)
 t.add('march 17', 55)
 t.add('march 1', 35)
