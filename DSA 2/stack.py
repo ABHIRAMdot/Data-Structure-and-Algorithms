@@ -1,37 +1,37 @@
 # Stack using Array
 
-# class Stack:
-#     def __init__(self, size):
-#         self.size = size
-#         self.arr = [None] * size
-#         self.top = -1        #stack pointer
+class Stack:
+    def __init__(self, size):
+        self.size = size
+        self.arr = [None] * size
+        self.top = -1        #stack pointer
 
-#     def isEmpty(self):
-#         return self.top == -1
+    def isEmpty(self):
+        return self.top == -1
     
-#     def isFull(self):
-#         return self.top == self.size -1
+    def isFull(self):
+        return self.top == self.size -1
     
-#     def push(self, value):
-#         if self.isFull():
-#             print("Stack Overflow")
-#             return
-#         self.top += 1
-#         self.arr[self.top] = value
+    def push(self, value):
+        if self.isFull():
+            print("Stack Overflow")
+            return
+        self.top += 1
+        self.arr[self.top] = value
 
-#     def pop(self):
-#         if self.isEmpty():
-#             print("Stack underflow")
-#             return 
-#         value = self.arr[self.top]
-#         self.top -= 1
-#         return value
+    def pop(self):
+        if self.isEmpty():
+            print("Stack underflow")
+            return 
+        value = self.arr[self.top]
+        self.top -= 1
+        return value
     
-#     def peek(self):
-#         if self.isEmpty():
-#             print("Stack is Empty")
-#             return
-#         return self.arr[self.top]
+    def peek(self):
+        if self.isEmpty():
+            print("Stack is Empty")
+            return
+        return self.arr[self.top]
     
 
 # s = Stack(3)
@@ -193,7 +193,7 @@ class StackUsingQueue:
 
 #----------------------------
 
-class MySTack:
+class MinSTack:
     def __init__(self):
         self.stack = []
         self.min_stack = []
@@ -218,7 +218,7 @@ class MySTack:
     def getMin(self):
         return self.min_stack[-1]
     
-# s = MySTack()
+# s = MinSTack()
 # s.push(7)
 # s.push(3)
 # s.push(5)
@@ -326,10 +326,10 @@ def sort_stack(stack):
 # sorted_stack = sort_stack(stack)
 # print(sorted_stack)
 
+#-------------------------------------------------------------
 
 
-
-
+#better. min for each range
 class MinStack:
     def __init__(self):
         self.stack = []
@@ -361,3 +361,53 @@ class MinStack:
 # print(s.getMin())  # 3
 # s.pop()
 # print(s.getMin())  # 5
+
+#-----------------------------------------
+
+# Undo Redo
+
+class TextEditor:
+    def __init__(self):
+        self.text = ""
+        self.undo_stack = []
+        self.redo_stack = []
+
+    def type(self, new):
+        self.undo_stack.append(self.text)
+        self.text += new
+        self.redo_stack.clear()
+
+    def undo(self):
+        if self.undo_stack:
+            self.redo_stack.append(self.text)
+            self.text = self.undo_stack.pop()
+
+        else:
+            print("Nothing to Undo")
+
+    def redo(self):
+        if self.redo_stack:
+            self.undo_stack.append(self.text)
+            self.text = self.redo_stack.pop()
+        else:
+            print("Nothing to redo")
+
+    def show(self):
+        print(self.text)
+
+t = TextEditor()
+t.type("Hello")
+t.type(" world")
+t.show()
+
+t.undo()
+t.show()
+
+t.redo()
+t.show()
+
+t.undo()
+t.show()
+
+t.redo()
+t.show()

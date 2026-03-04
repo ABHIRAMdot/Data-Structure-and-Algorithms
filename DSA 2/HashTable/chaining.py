@@ -1,40 +1,40 @@
-# class HashTable:
-#     def __init__(self):
-#         self.MAX  = 10
-#         self.arr = [[] for i in range(self.MAX)]
-#         #self.n = 0
+class HashTable:
+    def __init__(self):
+        self.MAX  = 10
+        self.arr = [[] for i in range(self.MAX)]
+        #self.n = 0
 
-#     def get_hash(self, key):
-#         h = 0
-#         for char in key:
-#             h += ord(char)
-#         return h % self.MAX
+    def get_hash(self, key):
+        h = 0
+        for char in key:
+            h += ord(char)
+        return h % self.MAX
     
-#     def add(self, key, val):
-#         h = self.get_hash(key)
-#         found = False
-#         for idx, element in enumerate(self.arr[h]):
-#             if len(element) == 2 and element[0] == key:
-#                 self.arr[h][idx] = (key, val)
-#                 found = True
-#                 break
-#         if not found:
-#             self.arr[h].append((key, val))
-#            # self.n += 1
+    def add(self, key, val):
+        h = self.get_hash(key)
+        found = False
+        for idx, element in enumerate(self.arr[h]):
+            if len(element) == 2 and element[0] == key:
+                self.arr[h][idx] = (key, val)
+                found = True
+                break
+        if not found:
+            self.arr[h].append((key, val))
+           # self.n += 1
 
-#     def get(self, key):         # arr[h] = [ (key, value), (key, value)]
-#         h = self.get_hash(key)
-#         for element in self.arr[h]:
-#             if element[0] == key:
-#                 return element[1]
+    def get(self, key):         # arr[h] = [ (key, value), (key, value)]
+        h = self.get_hash(key)
+        for element in self.arr[h]:
+            if element[0] == key:
+                return element[1]
     
-#     def delete(self, key):
-#         h = self.get_hash(key)
-#         for idx, element in enumerate(self.arr[h]):
-#             if len(element) == 2 and element[0] == key:
-#                 del self.arr[h][idx]
-#                 #self.n -= 1
-#                 break
+    def delete(self, key):
+        h = self.get_hash(key)
+        for idx, element in enumerate(self.arr[h]):
+            if len(element) == 2 and element[0] == key:
+                del self.arr[h][idx]
+                #self.n -= 1
+                break
 
 
 
