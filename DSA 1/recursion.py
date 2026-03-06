@@ -246,4 +246,21 @@ def reverse_st(s):
     
     return  reverse_st(s[1:]) + s[0]
 
-print(reverse_st('abhiram'))
+# print(reverse_st('abhiram'))
+
+
+
+
+s = 'malayadlam'
+
+def is_pal(s, i = 0 ,j = len(s)-1):
+
+    if i >= j:
+        return True
+    
+    if s[i] != s[j]:
+        return False
+    
+    return is_pal(s, i+ 1 , j - 1)
+
+# print(is_pal(s))
