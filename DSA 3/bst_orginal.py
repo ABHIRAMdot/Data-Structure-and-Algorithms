@@ -120,12 +120,80 @@ for i in val:
 # print()
 # root.preorder()
 # print()
-# root.inorder()
-# print()
+root.inorder()
+print()
 # root.postorder()
 # print()
 
-root.deleteBST(10)
-print()
+# root.deleteBST(10)
+# print()
 
-root.inorder()
+# root.inorder()
+
+
+def is_bst(node, min_val=float('-inf'), max_val=float('inf')):
+    if node is None:
+        return True
+    
+    if not(min_val < node.key < max_val):
+        return False
+    
+    return (
+        is_bst(node.left, min_val, node.key) and is_bst(node.right, node.key, max_val)
+    )
+
+# print()
+# print(is_bst(root))
+
+
+def identical(t1, t2):
+    if t1 is None and t2 is None:
+        return True
+    
+    if t1 is None or t2 is None:
+        return False
+    
+    if t1.key != t2.key:
+        return False
+    
+    return (
+        identical(t1.left, t2.left) and 
+        identical(t1.right, t2.right)
+    )
+
+
+# tree1 = BST(50)
+# tree1.insertBST(30)
+# tree1.insertBST(70)
+
+# tree2 = BST(50)
+# tree2.insertBST(70)
+# tree2.insertBST(75)
+
+# print(identical(tree1, tree2))
+
+def kth_smallest(root, k):
+    stack = []
+
+    def inorder_small(node):
+        if node is None:
+            return
+
+        # inorder_small(node.right) #if kth largest
+        inorder_small(node.left)
+        stack.append(node.key)
+        inorder_small(node.right)
+        # inorder_small(node.left)  #if kth largest
+
+    inorder_small(root)
+
+    return stack[k-1]
+
+# print(kth_smallest(root,3))
+
+def find_smallest(root):
+    if root.left is None:
+        return root.key
+    return find_smallest(root.left)
+
+print(find_smallest(root))
