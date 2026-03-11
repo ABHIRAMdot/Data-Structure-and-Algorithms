@@ -189,6 +189,7 @@ for i in val:
 # print()
 # root.preorder()
 # print()
+
 root.inorder()
 print()
 
