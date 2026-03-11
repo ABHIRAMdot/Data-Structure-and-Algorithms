@@ -1,3 +1,4 @@
+from collections import deque
 class BST:
     def __init__(self, key):
         self.key = key
@@ -72,6 +73,21 @@ class BST:
 
         print(self.key, end=" ")
 
+    
+    def levelorder(self):
+        queue = deque()
+        queue.append(self)
+
+        while queue:
+            node = queue.popleft()
+            print(node.key, end=" ")
+
+            if node.left:
+                queue.append(node.left)
+
+            if node.right:
+                queue.append(node.right)
+
 
     def find_min(self):
         current = self
@@ -109,6 +125,59 @@ class BST:
         return self
     
 
+    def second_largest(self):
+        if self.right:
+            if self.right.right is None and self.right.left is None:
+                return self.key
+            
+            return self.right.second_largest()
+        
+        return self.left.find_max()
+    
+    def find_max(self):
+        if self.right is None:
+            self.key
+
+        return self.right.find_max()
+    
+
+    def closest_value(self, target, closest=None):
+        if closest is None:
+            closest = self.key
+
+        if abs(target - self.key) < abs(target - closest):
+            closest = self.key
+
+        if target < self.key and self.left:
+            return self.left.closest_value(target, closest)
+        
+        elif target > self.key and self.right:
+            return self.right.closest_value(target, closest)
+        return closest    
+    
+    def height(self):
+        left_height = -1
+        right_height = -1
+
+        if self.left:
+            left_height = self.left.height()
+        if self.right:
+            right_height = self.right.height()
+
+        return max(left_height, right_height) + 1
+    
+    def depth_of_node(self, val, d=0):
+        if self.key == val:
+            return d 
+        
+        if val < self.key and self.left:
+            return self.left.depth_of_node(val, d+1)
+        if val > self.key and self.right:
+            return self.left.depth_of_node(val, d+1)
+        
+        return -1
+    
+
 
 root = BST(21)
 val = [10,30,5,3,3,12,25,100,3,7]
@@ -122,6 +191,12 @@ for i in val:
 # print()
 root.inorder()
 print()
+
+root.levelorder()
+
+# print(root.depth_of_node(10))
+
+# print(root.height())
 # root.postorder()
 # print()
 
@@ -130,6 +205,7 @@ print()
 
 # root.inorder()
 
+#--------------------------------------------------------------
 
 def is_bst(node, min_val=float('-inf'), max_val=float('inf')):
     if node is None:
@@ -145,6 +221,7 @@ def is_bst(node, min_val=float('-inf'), max_val=float('inf')):
 # print()
 # print(is_bst(root))
 
+#-----------------------------------------------------------------------
 
 def identical(t1, t2):
     if t1 is None and t2 is None:
@@ -172,6 +249,8 @@ def identical(t1, t2):
 
 # print(identical(tree1, tree2))
 
+#-----------------------------------------------------------------------
+
 def kth_smallest(root, k):
     stack = []
 
@@ -191,9 +270,13 @@ def kth_smallest(root, k):
 
 # print(kth_smallest(root,3))
 
+#-----------------------------------------------------------------------
+
 def find_smallest(root):
     if root.left is None:
         return root.key
     return find_smallest(root.left)
 
-print(find_smallest(root))
+# print(find_smallest(root))
+
+#-----------------------------------------------------------------------
