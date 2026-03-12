@@ -156,8 +156,12 @@ class BST:
         return closest    
     
     def height(self):
+        
         left_height = -1
         right_height = -1
+
+        if self.key is None:
+            return 0
 
         if self.left:
             left_height = self.left.height()
@@ -177,6 +181,37 @@ class BST:
         
         return -1
     
+    def count_of_nodes(self):
+        left_count = 0
+        right_count = 0
+
+        if self.key is None:
+            return 0
+
+        if self.left:
+            left_count = self.left.count_of_nodes()
+        if self.right:
+            right_count = self.right.count_of_nodes()
+        
+        return left_count + right_count + 1
+    
+    def sum_of_nodes(self):
+        left_total = 0
+        right_total = 0
+
+        if self.key is None:
+            return 0
+        
+        if self.left:
+            left_total = self.left.sum_of_nodes()
+
+        if self.right:
+            right_total = self.right.sum_of_nodes()
+
+        return left_total + right_total + self.key
+    
+    
+    
 
 
 root = BST(21)
@@ -193,11 +228,15 @@ for i in val:
 root.inorder()
 print()
 
-root.levelorder()
+# root.levelorder()
 
 # print(root.depth_of_node(10))
 
-# print(root.height())
+print(root.height())
+
+print(root.count_of_nodes())
+
+print(root.sum_of_nodes())
 # root.postorder()
 # print()
 
