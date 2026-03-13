@@ -15,6 +15,7 @@ def getBalance(node):
         return 0
     return getHeight(node.left) - getHeight(node.right)
 
+#LL
 def rightRotate(z):
     y = z.left
     T3 = y.right
@@ -23,6 +24,19 @@ def rightRotate(z):
     z.left = T3
 
     # updata heights
+
+    z.height = 1 + max(getHeight(z.left), getHeight(z.right))
+    y.height = 1 + max(getHeight(y.left), getHeight(y.right))
+
+    return y
+
+# RR
+def leftRotate(z):
+    y = z.right
+    T2 = y.left
+
+    y.left = z
+    z.right = T2
 
     z.height = 1 + max(getHeight(z.left), getHeight(z.right))
     y.height = 1 + max(getHeight(y.left), getHeight(y.right))
@@ -49,6 +63,21 @@ def insert(root, key):
     if balance > 1 and key < root.left.key:
         return rightRotate(root)
     
+    # RR Case
+    if balance < -1 and key > root.right.key:
+        return leftRotate(root)
+    
+    #LR
+    if balance > 1 and key > root.left.key:
+        root.left = leftRotate(root.left)
+        return rightRotate(root)
+    
+    # RL
+    if balance < -1 and key < root.left.key:
+        root.left = rightRotate(root.right)
+        return leftRotate(root)
+
+
     return root
 
 
