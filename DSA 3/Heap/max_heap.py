@@ -9,7 +9,7 @@ class MaxHeap:
 
     #heapify upward
     def heapify_up(self, index):   #index will be the next position that we are inserting in the heap
-        parent = (index - 1) // 2  # here parent is the root of the new node 
+        parent = (index - 1) // 2  # here parent is the root(index or parent node)  of the new node 
 
         if index > 0 and self.heap[index] > self.heap[parent]:
             self.heap[index], self.heap[parent] = self.heap[parent], self.heap[index]
@@ -50,11 +50,44 @@ class MaxHeap:
         print(self.heap)
 
 
-h = MaxHeap()
+# h = MaxHeap()
 
-h.insert(10)
-h.insert(40)
-h.insert(30)
-h.insert(50)
+# h.insert(10)
+# h.insert(40)
+# h.insert(30)
+# h.insert(50)
 
-h.print_heap()
+# h.print_heap()
+# print(h.extract_max())
+# h.print_heap()
+
+
+
+def build_max_heap(arr):
+    n = len(arr)
+
+    for i in range(n//2-1, -1 , -1): #  start from last non leaf's parent index and backwords
+        heapify_down(arr, i, n)
+
+
+def heapify_down(arr, index, size):
+    largest = index
+
+    left = 2*index + 1
+    right = 2*index + 2
+
+    if left < size and arr[left] > arr[largest]:
+        largest = left
+
+    if right < size and arr[right] > arr[largest]:
+        largest = right
+
+    if largest != index:
+        arr[index], arr[largest] = arr[largest], arr[index]
+        heapify_down(arr, largest, size)
+
+
+
+# arr = [10,40,30,50]
+# build_max_heap(arr)
+# print(arr)
