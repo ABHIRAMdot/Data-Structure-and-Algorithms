@@ -40,10 +40,14 @@ def took_k_largest(arr, k):
     min_heap = []
 
     for num in arr:
-        heapq.heappush(min_heap, num)
+        heapq.heappush(min_heap, -num)
 
         if len(min_heap) > k:
             heapq.heappop(min_heap)
 
-    return min_heap[0]
+    return -min_heap[0]
 
+arr = [10, 4, 7, 20, 2,15]
+k = 3
+
+print(took_k_largest(arr, k))

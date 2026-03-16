@@ -50,6 +50,30 @@ class MaxHeap:
         print(self.heap)
 
 
+    def delete(self, index):
+        if index > len(self.heap):
+            return 
+        
+        last = len(self.heap) -1
+
+        # replace the index with last element
+        self.heap[index] = self.heap[last]
+
+        #delete the last element
+        self.heap.pop()
+
+        if index < len(self.heap):
+            parent = (index-1) // 2
+
+            if index > 0 and self.heap[index] > self.heap[parent]:
+                self.heapify_up(index)
+
+            else:
+                self.heapify_down(index)
+
+
+
+
 # h = MaxHeap()
 
 # h.insert(10)
@@ -61,7 +85,7 @@ class MaxHeap:
 # print(h.extract_max())
 # h.print_heap()
 
-
+#----------------------------------------------------------
 
 def build_max_heap(arr):
     n = len(arr)
@@ -91,3 +115,35 @@ def heapify_down(arr, index, size):
 # arr = [10,40,30,50]
 # build_max_heap(arr)
 # print(arr)
+#------------------------------------------------------------
+
+# convert min to max 
+
+def heapify_max(arr, size, index):
+    largest = index
+    left = 2*index + 1
+    right = 2*index +2
+
+    if left < size and arr[left] > arr[largest]:
+        largest = left
+
+    if right < size and arr[right] > arr[largest]:
+        largest = right
+
+    if largest != index:
+        arr[index], arr[largest] = arr[largest], arr[index]
+        heapify_max(arr, size, largest)
+
+def convert_min_max(arr):
+    n = len(arr)
+
+    for i in range(n//2-1, -1, -1):
+        heapify_max(arr, n, i)
+
+    return arr
+
+arr = [10, 20, 30, 40, 50]
+
+# print(convert_min_max(arr))
+
+#----------------------------------------
