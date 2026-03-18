@@ -75,7 +75,7 @@
 # print(graph)
 #---------------------------------
 
-
+from collections import deque
 class Graph:
     def __init__(self):
         self.graph = {}
@@ -118,12 +118,39 @@ class Graph:
                 if vertex in list1:
                     list1.remove(vertex)
 
+    def dfs(self, node, visited=None):
+        if visited is None:
+            visited = set()
+        if node not in visited:
+            print(node,end='->')
+            visited.add(node)
+
+            for i in self.graph[node]:
+                self.dfs(i, visited)
+
+
+    
+    def bfs(self, start):
+        visited = set()
+        queue = deque([start])
+
+        visited.add(start)
+
+        while queue:
+            node = queue.popleft()
+            print(node)
+
+            for i in self.graph[node]:
+                if i not in visited:
+                    visited.add(i)
+                    queue.append(i)
+
+    
     def display(self):
         for vertex in self.graph:
             print(vertex, "-->", self.graph[vertex])
 
 
-        
 
 g = Graph()
 
@@ -135,9 +162,15 @@ g.add_vertex("D")
 
 g.add_edge("A", "B")
 g.add_edge("A", "C")
-g.add_edge("B", "C")
+g.add_edge("B", "D")
 g.add_edge("C", "D")
 
-g.remove_vertex("C")
+# g.remove_vertex("C")
 
 g.display()
+
+print()
+g.dfs("A")
+print()
+
+g.bfs("A")
