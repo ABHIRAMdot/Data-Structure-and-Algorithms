@@ -1,4 +1,4 @@
-def heapify(arr, size, index):
+def heapify(arr, index, size):
     largest = index
     left = 2*index + 1
     right = 2*index + 2
@@ -18,11 +18,11 @@ def heap_sort(arr):
     n = len(arr)
 
     for i in range(n//2 -1, -1, -1):   # for heapifying from the last none leaf node
-        heapify(arr, n, i)
+        heapify(arr, i, n)
 
     for i in range(n-1, 0, -1):   # if len(arr) == 5 then range becomes 4,3,2,1 stops before 0
         arr[0], arr[i] = arr[i], arr[0]
-        heapify(arr, i, 0)    # it will return arguments like first- heapify(arr, 4, 0) then index 4 will be ignore in heapify.
+        heapify(arr, 0, i)    # it will return arguments like first- heapify(arr, 4, 0) then index 4 will be ignore in heapify.
 
 
 # arr = [10, 40, 30, 50]

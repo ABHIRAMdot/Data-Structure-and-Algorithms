@@ -41,8 +41,8 @@ class MinHeap:
             self.heap[index], self.heap[smallest] = self.heap[smallest], self.heap[index]
             self.heapify_down(smallest)
 
-    def print_heap(self):
-        print(self.heap)
+    # def print_heap(self):
+    #     print(self.heap)
 
 
 h = MinHeap()

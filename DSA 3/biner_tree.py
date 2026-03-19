@@ -110,14 +110,14 @@ def is_full(root):
     # 3️⃣ Apply formula
 
 
-# def height(root):
-#     if root is None:
-#         return -1
+def height(root):
+    if root is None:
+        return -1
     
-#     left_h = height(root.left)
-#     right_h = height(root.right)
+    left_h = height(root.left)
+    right_h = height(root.right)
 
-#     return 1 + max(left_h, right_h)
+    return 1 + max(left_h, right_h)
 
 # def count_internal(root):
 #     if root is None:

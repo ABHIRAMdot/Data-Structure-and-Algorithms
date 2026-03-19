@@ -109,7 +109,7 @@ class BST:
                 print("node not found")
 
         else:
-            if self.right is None and self.right is None:
+            if self.left is None and self.right is None:
                 return None
             
             if self.left is None:
@@ -136,7 +136,7 @@ class BST:
     
     def find_max(self):
         if self.right is None:
-            self.key
+           return self.key
 
         return self.right.find_max()
     
