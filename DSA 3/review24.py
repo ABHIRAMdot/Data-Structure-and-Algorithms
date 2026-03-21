@@ -16,6 +16,7 @@ class BinaryTree:
             left_height = self.left.height()
         if self.right:
             right_height = self.right.height()
+            
 
         return max(left_height, right_height) + 1
 
