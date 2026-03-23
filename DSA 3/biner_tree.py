@@ -98,6 +98,7 @@ def is_full(root):
     
     if root.left is None and root.right is None:
         return None
+        
     
     if root.left and root.right:
         return is_full(root.left) and is_full(root.right)
